@@ -2,7 +2,7 @@
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
-var tagline2 = document.querySelector('tagline-2');
+var tagline2 = document.querySelector('.tagline-2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -21,9 +21,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var images = covers[getRandomIndex(covers)];
-var titles = titles[getRandomIndex(titles)];
-var descriptors1 = descriptors[getRandomIndex(descriptors)];
-var descriptors2 = descriptors[getRandomIndex(descriptors)];
-
-coverTitle.innerText = titles;
+coverImage.src = covers[getRandomIndex(covers)];
+coverTitle.innerText = titles[getRandomIndex(titles)];
+tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+tagline2.innerText = descriptors[getRandomIndex(descriptors)];
