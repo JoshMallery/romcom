@@ -16,6 +16,10 @@ buttonRandomCover.addEventListener('click', generateRandomCover);
 
 // Create your event handlers and other functions here 👇
 function generateRandomCover() {
+  // currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
+  // coverTitle.innerText = currentCover.title;
+
+  // savedCovers.push(new Cover(coverImage.src, "Whitney", "sunsets", "sorrows"))
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
