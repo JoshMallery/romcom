@@ -1,23 +1,32 @@
 // Create variables targetting the relevant DOM elements here 👇
-// Iter 0
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-// Iter 1
+
 var buttonRandomCover = document.querySelector('.random-cover-button');
-// Iter 2
 var buttonMakeOwnCover = document.querySelector('.make-new-button');
+
+var buttonHome = document.querySelector('.home-button');
+var buttonHomeClasses = buttonHome.classList;
+
+var home = document.querySelector('.home-view');
+var homeClasses = home.classList;
+
+var form = document.querySelector('.form-view');
+var formClasses = form.classList;
 
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
+// Global variable
 var currentCover;
 
 // Add your event listeners here 👇
 buttonRandomCover.addEventListener('click', generateRandomCover);
 buttonMakeOwnCover.addEventListener('click', makeOwnCover);
+// buttonHome.addEventListener('click', makeOwnCover);
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -29,13 +38,20 @@ function generateRandomCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+
+  // Update current cover to match displayed cover
+  currentCover = new Cover(
+    coverImage.src, coverTitle.innerText,
+    tagline1.innerText, tagline2.innerText
+  );
 }
 
 function makeOwnCover() {
-  // delete hidden line 29
-  // use .innerHTML?
-  // append hidden to line 17
+  homeClasses.toggle('hidden');
+  formClasses.toggle('hidden');
+  buttonHomeClasses.toggle('hidden');
 }
+
 
 // Main body of code here 👇
 
