@@ -20,3 +20,10 @@ var currentCover;
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+var images = covers[getRandomIndex(covers)];
+var titles = titles[getRandomIndex(titles)];
+var descriptors1 = descriptors[getRandomIndex(descriptors)];
+var descriptors2 = descriptors[getRandomIndex(descriptors)];
+
+coverTitle.innerText = titles;
