@@ -5,10 +5,15 @@ var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 
 var buttonRandomCover = document.querySelector('.random-cover-button');
+var buttonRandomCoverClasses = buttonRandomCover.classList;
+
 var buttonMakeOwnCover = document.querySelector('.make-new-button');
 
 var buttonHome = document.querySelector('.home-button');
 var buttonHomeClasses = buttonHome.classList;
+
+var buttonSavedCovers = document.querySelector('.save-cover-button');
+var buttonSavedCoversClasses = buttonSavedCovers.classList;
 
 var home = document.querySelector('.home-view');
 var homeClasses = home.classList;
@@ -50,6 +55,8 @@ function makeOwnCover() {
   homeClasses.toggle('hidden');
   formClasses.toggle('hidden');
   buttonHomeClasses.toggle('hidden');
+  buttonRandomCoverClasses.toggle('hidden');
+  buttonSavedCoversClasses.toggle('hidden');
 }
 
 
