@@ -5,21 +5,21 @@ var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
 
 var buttonRandomCover = document.querySelector('.random-cover-button');
-var buttonRandomCoverClasses = buttonRandomCover.classList;
-
 var buttonMakeOwnCover = document.querySelector('.make-new-button');
-
 var buttonHome = document.querySelector('.home-button');
-var buttonHomeClasses = buttonHome.classList;
+var buttonViewSavedCovers = document.querySelector('.view-saved-button');
+var buttonSaveCover = document.querySelector('.save-cover-button');
+var buttonMakeMyBook = document.querySelector('.create-new-book-button');
 
-var buttonSavedCovers = document.querySelector('.save-cover-button');
-var buttonSavedCoversClasses = buttonSavedCovers.classList;
 
 var home = document.querySelector('.home-view');
-var homeClasses = home.classList;
-
 var form = document.querySelector('.form-view');
-var formClasses = form.classList;
+var viewSavedCovers = document.querySelector('.saved-view');
+
+var userCoverInput = document.querySelector('#cover');
+var userTitleInput = document.querySelector('#title');
+var userFirstDescriptor = document.querySelector('#descriptor1');
+var userSecondDescriptor = document.querySelector('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -30,8 +30,12 @@ var currentCover;
 
 // Add your event listeners here 👇
 buttonRandomCover.addEventListener('click', generateRandomCover);
-buttonMakeOwnCover.addEventListener('click', makeOwnCover);
-// buttonHome.addEventListener('click', makeOwnCover);
+buttonMakeOwnCover.addEventListener('click', toggleMakeOwnCover);
+buttonViewSavedCovers.addEventListener('click', toggleViewSaved);
+buttonHome.addEventListener('click', toggleHome)
+buttonMakeMyBook.addEventListener('click', makeMyBook);
+//buttonSaveCover.addEventListener('click', saveCover); // use this on later iterations
+
 
 // Create your event handlers and other functions here 👇
 function getRandomIndex(array) {
@@ -39,97 +43,59 @@ function getRandomIndex(array) {
 }
 
 function generateRandomCover() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-
-  // Update current cover to match displayed cover
-  currentCover = new Cover(
-    coverImage.src, coverTitle.innerText,
-    tagline1.innerText, tagline2.innerText
-  );
+  instantiateCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
 }
 
-function makeOwnCover() {
-  homeClasses.toggle('hidden');
-  formClasses.toggle('hidden');
-  buttonHomeClasses.toggle('hidden');
-  buttonRandomCoverClasses.toggle('hidden');
-  buttonSavedCoversClasses.toggle('hidden');
+function instantiateCover(cover, title, descriptor1, descriptor2) {
+  coverImage.src = cover;
+  coverTitle.innerText = title;
+  tagline1.innerText = descriptor1;
+  tagline2.innerText = descriptor2;
+  currentCover = new Cover(cover, title, descriptor1, descriptor2);
 }
 
-function
+function hideAll() {
+  home.classList.add('hidden');
+  form.classList.add('hidden');
+  viewSavedCovers.classList.add('hidden');
+  buttonRandomCover.classList.add('hidden');
+  buttonSaveCover.classList.add('hidden');
+  buttonHome.classList.add('hidden');
+}
 
+function toggleMakeOwnCover() {
+  hideAll();
+  form.classList.remove('hidden');
+  buttonHome.classList.remove('hidden');
+}
 
-// Main body of code here 👇
+function toggleViewSaved() {
+  hideAll();
+  viewSavedCovers.classList.remove('hidden');
+  buttonHome.classList.remove('hidden');
+  buttonViewSavedCovers.classList.remove('hidden');
+}
+
+function toggleHome() {
+  hideAll()
+  home.classList.remove('hidden');
+  buttonRandomCover.classList.remove('hidden');
+  buttonSaveCover.classList.remove('hidden');
+  buttonViewSavedCovers.classList.remove('hidden');
+}
+
+function makeMyBook() {
+  event.preventDefault();
+
+  covers.push(userCoverInput.value);
+  titles.push(userTitleInput.value);
+  descriptors.push(userFirstDescriptor.value);
+  descriptors.push(userSecondDescriptor.value);
+
+  instantiateCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
+
+  toggleHome();
+}
 
 // Generate random cover on load
 generateRandomCover();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Create variables targetting the relevant DOM elements here 👇
-// // Iter 0
-// var coverImage = document.querySelector('.cover-image');
-// var coverTitle = document.querySelector('.cover-title');
-// var tagline1 = document.querySelector('.tagline-1');
-// var tagline2 = document.querySelector('.tagline-2');
-// // Iter 1
-// var buttonRandomCover = document.querySelector('.random-cover-button');
-// // Iter 2
-// var buttonMakeOwnCover = document.querySelector('.make-new-button');
-//
-// // We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
-// var currentCover;
-//
-// // Add your event listeners here 👇
-// buttonRandomCover.addEventListener('click', generateRandomCover);
-// buttonMakeOwnCover.addEventListener('click', makeOwnCover);
-//
-// // Create your event handlers and other functions here 👇
-// function generateRandomCover() {
-//   // currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText);
-//   // coverTitle.innerText = currentCover.title;
-//   // savedCovers.push(new Cover(coverImage.src, "Whitney", "sunsets", "sorrows"))
-//   coverImage.src = covers[getRandomIndex(covers)];
-//   coverTitle.innerText = titles[getRandomIndex(titles)];
-//   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-//   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
-// }
-//
-// function makeOwnCover() {
-//   // delete hidden line 29
-//     // use .innerHTML?
-//   // append hidden to line 17
-// }
-//
-// // We've provided one function to get you started
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
-//
-// coverImage.src = covers[getRandomIndex(covers)];
-// coverTitle.innerText = titles[getRandomIndex(titles)];
-// tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-// tagline2.innerText = descriptors[getRandomIndex(descriptors)];
