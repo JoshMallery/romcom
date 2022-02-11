@@ -17,7 +17,9 @@ var form = document.querySelector('.form-view');
 var viewSavedCovers = document.querySelector('.saved-view');
 
 var userCoverInput = document.querySelector('#cover');
-var testCoverInput = "";
+var userTitleInput = document.querySelector('#title');
+var userFirstDescriptor = document.querySelector('#descriptor1');
+var userSecondDescriptor = document.querySelector('#descriptor2');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -41,16 +43,15 @@ function getRandomIndex(array) {
 }
 
 function generateRandomCover() {
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+  instantiateCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+}
 
-  // Update current cover to match displayed cover
-  currentCover = new Cover(
-    coverImage.src, coverTitle.innerText,
-    tagline1.innerText, tagline2.innerText
-  );
+function instantiateCover(cover, title, descriptor1, descriptor2) {
+  coverImage.src = cover;
+  coverTitle.innerText = title;
+  tagline1.innerText = descriptor1;
+  tagline2.innerText = descriptor2;
+  currentCover = new Cover(cover, title, descriptor1, descriptor2);
 }
 
 function hideAll() {
@@ -84,9 +85,16 @@ function toggleHome() {
 }
 
 function makeMyBook() {
-  testCoverInput = userCoverInput.value;
-  covers.push(testCoverInput);
-   event.preventDefault();
+  event.preventDefault();
+
+  covers.push(userCoverInput.value);
+  titles.push(userTitleInput.value);
+  descriptors.push(userFirstDescriptor.value);
+  descriptors.push(userSecondDescriptor.value);
+
+  instantiateCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
+  
+  toggleHome();
 }
 
 // Generate random cover on load
