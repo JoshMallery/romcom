@@ -52,34 +52,31 @@ function hideAll() {
   home.classList.add('hidden');
   form.classList.add('hidden');
   viewSavedCovers.classList.add('hidden');
+  buttonRandomCover.classList.add('hidden');
+  buttonSaveCover.classList.add('hidden');
+  buttonHome.classList.add('hidden');
 }
 
 function toggleMakeOwnCover() {
   hideAll();
   form.classList.remove('hidden');
   buttonHome.classList.remove('hidden');
-  buttonRandomCover.classList.add('hidden');
-  buttonSaveCover.classList.add('hidden');
 }
 
 function toggleViewSaved() {
   hideAll();
   viewSavedCovers.classList.remove('hidden');
   buttonHome.classList.remove('hidden');
-  buttonRandomCover.classList.add('hidden');
   buttonViewSavedCovers.classList.remove('hidden');
-  buttonSaveCover.classList.add('hidden');
 }
 
 function toggleHome() {
   hideAll()
   home.classList.remove('hidden');
-  buttonHome.classList.add('hidden');
   buttonRandomCover.classList.remove('hidden');
   buttonSaveCover.classList.remove('hidden');
   buttonViewSavedCovers.classList.remove('hidden');
 }
-// Main body of code here 👇
 
 // Generate random cover on load
 generateRandomCover();
