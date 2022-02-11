@@ -59,6 +59,8 @@ function makeOwnCover() {
   buttonSavedCoversClasses.toggle('hidden');
 }
 
+function
+
 
 // Main body of code here 👇
 
