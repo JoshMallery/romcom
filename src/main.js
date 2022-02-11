@@ -24,8 +24,9 @@ var currentCover;
 
 // Add your event listeners here 👇
 buttonRandomCover.addEventListener('click', generateRandomCover);
-buttonMakeOwnCover.addEventListener('click', makeOwnCover);
+buttonMakeOwnCover.addEventListener('click', toggleMakeOwnCover);
 buttonViewSavedCovers.addEventListener('click', toggleViewSaved);
+buttonHome.addEventListener('click', toggleHome)
 //buttonSaveCover.addEventListener('click', saveCover); // use this on later iterations
 
 
@@ -52,7 +53,8 @@ function hideAll() {
   form.classList.add('hidden');
   viewSavedCovers.classList.add('hidden');
 }
-function makeOwnCover() {
+
+function toggleMakeOwnCover() {
   hideAll();
   form.classList.remove('hidden');
   buttonHome.classList.remove('hidden');
@@ -69,6 +71,14 @@ function toggleViewSaved() {
   buttonSaveCover.classList.add('hidden');
 }
 
+function toggleHome() {
+  hideAll()
+  home.classList.remove('hidden');
+  buttonHome.classList.add('hidden');
+  buttonRandomCover.classList.remove('hidden');
+  buttonSaveCover.classList.remove('hidden');
+  buttonViewSavedCovers.classList.remove('hidden');
+}
 // Main body of code here 👇
 
 // Generate random cover on load
