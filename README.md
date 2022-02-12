@@ -1,13 +1,34 @@
-# RomCom
+# ReadMe for Romcom
 
-A boilerplate repo. 
+## 2201 Romcom Paired Project
 
-## Set Up
-1. ONE teammate: fork this boilerplate repository 
+### Contributors:
+Whitney Perricone, Kal Al-Rajhi, Joshua Mallery
+
+### Technologies Used:
+- IDE: Atom
+- JavaScript
+- HTML
+- CSS
+
+### Instructions for running and Viewing the project:
+1. Fork this repository
 2. Clone down your new, forked repo
 3. cd into the repository
 4. Open it in your text editor
 5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
 
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
+### Deploy Link:
+[Project Link](https://wperricone.github.io/romcom/)
+
+
+### Images/ Gif’s :
+![Kitty Kiss](https://c.tenor.com/v6I8XKnn-acAAAAC/cat-love.gif)
+
+
+### Future additions:
+- Iteration 5: deleting saved covers with a double-click
+- More Kitties
+
+### Thanks:
+We would just like to say thank you to @nicholas, @maddie, @nick, @brenda, as well as Neil, Stephen, Sam, and all of our mentors, instructors, rocks and cohort mates. 
