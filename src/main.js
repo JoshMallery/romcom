@@ -45,7 +45,7 @@ function generateRandomCover() {
   instantiateCover(randCover, randTitle, randDescriptor1, randDescriptor2);
 }
 
-function instantiateCover(cover, title, descriptor1, descriptor2) {
+function createCover(cover, title, descriptor1, descriptor2) {
   coverImage.src = cover;
   coverTitle.innerText = title;
   tagline1.innerText = descriptor1;
@@ -81,8 +81,7 @@ function toggleViewSaved() {
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
       <img class="overlay" src="./assets/overlay.png">
-    </section>
-    `;
+    </section>`;
   }
 }
 
@@ -102,7 +101,7 @@ function makeMyBook() {
   descriptors.push(userFirstDescriptor.value);
   descriptors.push(userSecondDescriptor.value);
 
-  instantiateCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
+  createCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
   toggleHome();
 }
 
