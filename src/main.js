@@ -42,7 +42,7 @@ function generateRandomCover() {
   var randTitle = titles[getRandomIndex(titles)];
   var randDescriptor1 = descriptors[getRandomIndex(descriptors)];
   var randDescriptor2 = descriptors[getRandomIndex(descriptors)];
-  instantiateCover(randCover, randTitle, randDescriptor1, randDescriptor2);
+  createCover(randCover, randTitle, randDescriptor1, randDescriptor2);
 }
 
 function createCover(cover, title, descriptor1, descriptor2) {
