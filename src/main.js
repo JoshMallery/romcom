@@ -86,7 +86,7 @@ function toggleViewSaved() {
 }
 
 function toggleHome() {
-  hideAll()
+  hideAll();
   home.classList.remove('hidden');
   buttonRandomCover.classList.remove('hidden');
   buttonSaveCover.classList.remove('hidden');
@@ -102,6 +102,7 @@ function makeMyBook() {
   descriptors.push(userSecondDescriptor.value);
 
   createCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
+  clearInputs();
   toggleHome();
 }
 
@@ -109,6 +110,13 @@ function saveCover() {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
+}
+
+function clearInputs() {
+  userCoverInput.value = "";
+  userTitleInput.value = "";
+  userFirstDescriptor.value = "";
+  userSecondDescriptor.value = "";
 }
 
 generateRandomCover();
