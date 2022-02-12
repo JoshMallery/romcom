@@ -25,7 +25,6 @@ var userSecondDescriptor = document.querySelector('#descriptor2');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-// Global variable
 var currentCover;
 
 // Add your event listeners here 👇
@@ -43,7 +42,11 @@ function getRandomIndex(array) {
 }
 
 function generateRandomCover() {
-  instantiateCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  var randCover = covers[getRandomIndex(covers)];
+  var randTitle = titles[getRandomIndex(titles)];
+  var randDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  instantiateCover(randCover, randTitle, randDescriptor1, randDescriptor2);
 }
 
 function instantiateCover(cover, title, descriptor1, descriptor2) {
@@ -74,6 +77,15 @@ function toggleViewSaved() {
   viewSavedCovers.classList.remove('hidden');
   buttonHome.classList.remove('hidden');
   buttonViewSavedCovers.classList.remove('hidden');
+
+  var savedCoversSection = document.querySelector('.saved-covers-section');
+  for (i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+    <img class="cover-image mini-cover" src="${savedCovers[i].cover}">
+    <h2 class="mini-cover cover-title">${savedCovers[i].title}</h2>`;
+
+  }
+
 }
 
 function toggleHome() {
