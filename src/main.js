@@ -80,12 +80,13 @@ function toggleViewSaved() {
   buttonViewSavedCovers.classList.remove('hidden');
 
   // Don't enter if duplicate covers exist
-  savedCoversSection.classList.add('mini-cover');
   for (i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
-    <img class="cover-image" src="${savedCovers[i].cover}">
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+    <section class="mini-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+    </section>
     `;
   }
 
@@ -112,8 +113,11 @@ function makeMyBook() {
   toggleHome();
 }
 
+// Come back to try avoiding duplicate cover images
 function saveCover() {
-  savedCovers.push(currentCover);
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
 // Generate random cover on load
