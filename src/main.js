@@ -15,6 +15,7 @@ var buttonMakeMyBook = document.querySelector('.create-new-book-button');
 var home = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 var viewSavedCovers = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 var userCoverInput = document.querySelector('#cover');
 var userTitleInput = document.querySelector('#title');
@@ -33,7 +34,7 @@ buttonMakeOwnCover.addEventListener('click', toggleMakeOwnCover);
 buttonViewSavedCovers.addEventListener('click', toggleViewSaved);
 buttonHome.addEventListener('click', toggleHome)
 buttonMakeMyBook.addEventListener('click', makeMyBook);
-//buttonSaveCover.addEventListener('click', saveCover); // use this on later iterations
+buttonSaveCover.addEventListener('click', saveCover);
 
 
 // Create your event handlers and other functions here 👇
@@ -78,12 +79,14 @@ function toggleViewSaved() {
   buttonHome.classList.remove('hidden');
   buttonViewSavedCovers.classList.remove('hidden');
 
-  var savedCoversSection = document.querySelector('.saved-covers-section');
+  // Don't enter if duplicate covers exist
+  savedCoversSection.classList.add('mini-cover');
   for (i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
-    <img class="cover-image mini-cover" src="${savedCovers[i].cover}">
-    <h2 class="mini-cover cover-title">${savedCovers[i].title}</h2>`;
-
+    <img class="cover-image" src="${savedCovers[i].cover}">
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+    `;
   }
 
 }
@@ -107,6 +110,10 @@ function makeMyBook() {
   instantiateCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
 
   toggleHome();
+}
+
+function saveCover() {
+  savedCovers.push(currentCover);
 }
 
 // Generate random cover on load
