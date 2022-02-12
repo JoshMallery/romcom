@@ -15,6 +15,7 @@ var buttonMakeMyBook = document.querySelector('.create-new-book-button');
 var home = document.querySelector('.home-view');
 var form = document.querySelector('.form-view');
 var viewSavedCovers = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 var userCoverInput = document.querySelector('#cover');
 var userTitleInput = document.querySelector('#title');
@@ -25,7 +26,6 @@ var userSecondDescriptor = document.querySelector('#descriptor2');
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-// Global variable
 var currentCover;
 
 // Add your event listeners here 👇
@@ -34,7 +34,7 @@ buttonMakeOwnCover.addEventListener('click', toggleMakeOwnCover);
 buttonViewSavedCovers.addEventListener('click', toggleViewSaved);
 buttonHome.addEventListener('click', toggleHome)
 buttonMakeMyBook.addEventListener('click', makeMyBook);
-//buttonSaveCover.addEventListener('click', saveCover); // use this on later iterations
+buttonSaveCover.addEventListener('click', saveCover);
 
 
 // Create your event handlers and other functions here 👇
@@ -43,7 +43,11 @@ function getRandomIndex(array) {
 }
 
 function generateRandomCover() {
-  instantiateCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  var randCover = covers[getRandomIndex(covers)];
+  var randTitle = titles[getRandomIndex(titles)];
+  var randDescriptor1 = descriptors[getRandomIndex(descriptors)];
+  var randDescriptor2 = descriptors[getRandomIndex(descriptors)];
+  instantiateCover(randCover, randTitle, randDescriptor1, randDescriptor2);
 }
 
 function instantiateCover(cover, title, descriptor1, descriptor2) {
@@ -74,6 +78,17 @@ function toggleViewSaved() {
   viewSavedCovers.classList.remove('hidden');
   buttonHome.classList.remove('hidden');
   buttonViewSavedCovers.classList.remove('hidden');
+
+  for (i = savedCoversSection.childElementCount; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
+    <section class="mini-cover">
+      <img class="cover-image" src="${savedCovers[i].cover}">
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+      <img class="overlay" src="./assets/overlay.png">
+    </section>
+    `;
+  }
 }
 
 function toggleHome() {
@@ -93,8 +108,15 @@ function makeMyBook() {
   descriptors.push(userSecondDescriptor.value);
 
   instantiateCover(userCoverInput.value, userTitleInput.value, userFirstDescriptor.value, userSecondDescriptor.value);
-  
+
   toggleHome();
+}
+
+// Come back to try avoiding duplicate cover images
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
 
 // Generate random cover on load
