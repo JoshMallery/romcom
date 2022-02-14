@@ -74,10 +74,12 @@ function toggleViewSaved() {
   buttonHome.classList.remove('hidden');
   buttonViewSavedCovers.classList.remove('hidden');
 
-  for (i = savedCoversSection.childElementCount; i < savedCovers.length; i++) {
+  savedCoversSection.innerHTML = "";
+  
+  for (i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
     <section class="mini-cover">
-      <img class="cover-image" src="${savedCovers[i].cover}">
+      <img class="cover-image" id="${i}" ondblClick="deleteSelected(this)" src="${savedCovers[i].cover}">
       <h2 class="cover-title">${savedCovers[i].title}</h2>
       <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
       <img class="overlay" src="./assets/overlay.png">
@@ -118,5 +120,11 @@ function clearInputs() {
   userFirstDescriptor.value = "";
   userSecondDescriptor.value = "";
 }
+
+ function deleteSelected(picture) {
+  var arrayIndex = picture.id;
+  savedCovers.splice(arrayIndex,1);
+  toggleViewSaved();
+ }
 
 generateRandomCover();
