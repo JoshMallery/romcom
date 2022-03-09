@@ -25,10 +25,5 @@ Whitney Perricone, Kal Al-Rajhi, Joshua Mallery
 ### Images/ Gif’s :
 ![Kitty Kiss](https://c.tenor.com/v6I8XKnn-acAAAAC/cat-love.gif)
 
-
-### Future additions:
-- Iteration 5: deleting saved covers with a double-click
-- More Kitties
-
 ### Thanks:
 We would just like to say thank you to @nicholas, @maddie, @nick, @brenda, as well as Neil, Stephen, Sam, and all of our mentors, instructors, rocks and cohort mates. 
