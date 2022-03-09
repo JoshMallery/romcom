@@ -19,7 +19,7 @@ Whitney Perricone, Kal Al-Rajhi, Joshua Mallery
 5. View the project in the browser by running open index.html in your terminal
 
 ### Deploy Link:
-[Project Link](https://wperricone.github.io/romcom/)
+[Project Link](https://joshmallery.github.io/romcom/)
 
 
 ### Images/ Gif’s :
